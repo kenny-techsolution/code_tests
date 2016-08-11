@@ -22,23 +22,23 @@ var addTwoNumbers = function(l1, l2) {
     var answer = currentLN;
     var carryDigit = 0;
     //var i = 0;//to inspect number of loop run
-    while(tempLN1!==null||tempLN2!==null) {
+    while (tempLN1 !== null || tempLN2 !== null) {
         //console.log(i);
-        firstDigit = (tempLN1===null)? 0 : tempLN1.val;
-        secondDigit = (tempLN2===null)? 0 : tempLN2.val;
+        firstDigit = (tempLN1 === null) ? 0 : tempLN1.val;
+        secondDigit = (tempLN2 === null) ? 0 : tempLN2.val;
         result = firstDigit + secondDigit + carryDigit;
         currentLN.val = result % 10;
         carryDigit = Math.floor(result / 10);
         //console.log(answer);
-        tempLN1 = (tempLN1===null)? null:tempLN1.next;
-        tempLN2 = (tempLN2===null)? null:tempLN2.next;
-        if(tempLN1 !== null||tempLN2 !== null) {
+        tempLN1 = (tempLN1 === null) ? null : tempLN1.next;
+        tempLN2 = (tempLN2 === null) ? null : tempLN2.next;
+        if (tempLN1 !== null || tempLN2 !== null) {
             currentLN.next = new ListNode();
             currentLN = currentLN.next;
         }
         //i++;
     }
-    if(carryDigit!==0) {
+    if (carryDigit !== 0) {
         currentLN.next = new ListNode(carryDigit);
         currentLN = currentLN.next;
     }
