@@ -13,7 +13,6 @@ var permute = function(nums) {
     var nArray = [];
 
     function generate(digits, nums, inArray) {
-
         for (var i = 0; i < nums.length; i++) {
             var tempArray = copyArray(inArray);
             if (inArray.indexOf(nums[i]) === -1) {
