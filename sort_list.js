@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/merge-two-sorted-lists/
+//https://leetcode.com/problems/sort-list/
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -7,10 +7,30 @@
  * }
  */
 /**
- * @param {ListNode} l1
- * @param {ListNode} l2
+ * @param {ListNode} head
  * @return {ListNode}
  */
+var sortList = function(head) {
+    //edge cases 
+    if (head === null || head.next === null) {
+        return head;
+    }
+    //mergesort logic:break the list into half. then sort each side, then merge two sorted list back to one list.
+    var sentinal = new ListNode("");
+    sentinal.next = head;
+    var fastIndex = sentinal;
+    var slowIndex = sentinal;
+    while (fastIndex !== null && fastIndex.next !== null) {
+        fastIndex = fastIndex.next.next;
+        slowIndex = slowIndex.next;
+    }
+    var rightList = slowIndex.next;
+    slowIndex.next = null;
+    var l1 = sortList(sentinal.next);
+    var l2 = sortList(rightList);
+    return mergeTwoLists(l1, l2);
+};
+
 var mergeTwoLists = function(l1, l2) {
     if (l1 === null && l2 === null) {
         return null;
